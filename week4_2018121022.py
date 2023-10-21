@@ -10,8 +10,8 @@ class Node:
 class Linkedlist:
     def __init__(self, member_num):
         self.member_num = member_num
+        self.memberLocation = {}
         self.head = Node(None)
-        self.member_dict = {}
         self.size = 0
     
     def build(self, member):
@@ -19,15 +19,15 @@ class Linkedlist:
             return
         
         current = self.head
-        if member in self.member_dict:
-            current = self.member_dict[member]
+        if member in self.memberLocation:
+            current = self.memberLocation[member]
         
         new_node = Node(member)
         if current.next is not None:
             new_node.next = current.next
         current.next = new_node
         
-        self.member_dict[member] = new_node
+        self.memberLocation[member] = new_node
         self.size = self.size + 1
         
     def move(self, member):
@@ -35,11 +35,11 @@ class Linkedlist:
             return
         
         current = self.head
-        if member in self.member_dict:
-            current = self.member_dict[member]
+        if member in self.memberLocation:
+            current = self.memberLocation[member]
 
         if current.next is not None:
-            self.member_dict[member] = current.next            
+            self.memberLocation[member] = current.next            
 
 first_line = input().split(' ')
 member_num = int(first_line[0])
