@@ -2,7 +2,6 @@
 # Student ID: 2018121022
 # Assignment: Week 12
 
-
 class WeightedGraph:
   def __init__(self, n):
     self.adj = [[] for _ in range(n)]
