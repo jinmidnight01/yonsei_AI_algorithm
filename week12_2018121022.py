@@ -4,18 +4,15 @@
 
 class WeightedGraph:
   def __init__(self, n):
-    self.adj = [[] for _ in range(n)]
+    self.adj = [{} for _ in range(n)]
     self.n = n
 
   def add_edge(self, u, v, w):
-    self.adj[u].append((v, w))
-    self.adj[v].append((u, w))
+    self.adj[u][v] = w
+    self.adj[v][u] = w
 
   def get_weight(self, u, v):
-    for i in range(len(self.adj[u])):
-      if self.adj[u][i][0] == v:
-        return self.adj[u][i][1]
-    return None
+    return self.adj[u].get(v)
 
 def find_smallest_weight(graph, S):
     min_weight = float("inf")
